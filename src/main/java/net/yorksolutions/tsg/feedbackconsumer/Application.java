@@ -1,4 +1,4 @@
-package net.yorksolutions.tsg_9.__TheAvengers_feedback_analytics_consumer;
+package net.yorksolutions.tsg.feedbackconsumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
