@@ -21,3 +21,5 @@ public class HealthController {
         return ResponseEntity.ok(body);
     }
 }
+
+// curl -i http://localhost:8080/health   : run this command to check health
