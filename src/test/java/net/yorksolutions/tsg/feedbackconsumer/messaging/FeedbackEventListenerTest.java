@@ -36,10 +36,10 @@ class FeedbackEventListenerTest {
     }
 
     @Test
-    void handleFeedbackSubmitted_whenNullEvent_throwsNullPointerException() {
-        // Act + Assert
-        assertThrows(NullPointerException.class, () ->
+    void handleFeedbackSubmitted_whenNullEvent_doesNotThrow() {
+        assertDoesNotThrow(() ->
                 listener.handleFeedbackSubmitted(null)
         );
     }
+
 }

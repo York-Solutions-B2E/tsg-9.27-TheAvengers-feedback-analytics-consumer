@@ -20,6 +20,16 @@ public class FeedbackEventListener {
 //    method Spring calls every time a new event arrives on the Kafka topic
     public void handleFeedbackSubmitted(FeedbackEvent event) {
 
+//        log to show when an event is null. allows consumer to continue on bad input
+        if (event == null) {
+            log.warn("Received null feedback event — skipping");
+            return;
+        }
+
+        // below code can be used to manually fail a test
+//        if (event == null) {
+//            throw new RuntimeException("Boom!");
+//        }
         log.info(
                 "Received feedback event id={} memberId={} provider={} rating={} submittedAt={}",
                 event.id(),
