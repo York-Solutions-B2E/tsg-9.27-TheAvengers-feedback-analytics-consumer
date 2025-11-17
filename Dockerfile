@@ -28,7 +28,7 @@ WORKDIR /app
 # Bring over the built JAR
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8081
+EXPOSE 8080
 
 # Run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
