@@ -20,19 +20,20 @@ public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, FeedbackEvent> consumerFactory(KafkaProperties kafkaProperties) {
 
-        // 1) Load Kafka consumer properties from application.yml
+        // loads Kafka consumer properties from application.yml
         Map<String, Object> consumerProps = kafkaProperties.buildConsumerProperties();
 
-        // 2) Custom ObjectMapper with JavaTime support and strict schema validation
+        //  Custom ObjectMapper with JavaTime support and strict schema validation
+        // todo requires strict schema validation. check with Mike about this
         ObjectMapper mapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
-        // 3) JSON Deserializer using the custom mapper
+        // json deserializer using the custom mapper
         JsonDeserializer<FeedbackEvent> valueDeserializer =
                 new JsonDeserializer<>(FeedbackEvent.class, mapper);
 
-        // Keep trusted packages restricted (safer than "*")
+        // keep the trusted packages restricted instead of using *
         valueDeserializer.addTrustedPackages("net.yorksolutions.tsg.feedbackconsumer.messaging");
 
         return new DefaultKafkaConsumerFactory<>(
