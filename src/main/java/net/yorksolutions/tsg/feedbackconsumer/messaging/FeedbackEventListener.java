@@ -30,7 +30,7 @@ public class FeedbackEventListener {
     )
     public void handleFeedbackSubmitted(FeedbackEvent event) {
 
-        // Log when event is null and skip
+        // logs when event is null and skips to next message
         if (event == null) {
             log.warn("Received null feedback event — skipping");
             return;
@@ -40,7 +40,8 @@ public class FeedbackEventListener {
             String json = objectMapper.writeValueAsString(event);
 
             log.info(
-                    "\n====== SUBMITTED FEEDBACK ======\n{}\n=====================================\n",
+            // empty {} is a placeholder used by SLF4J for the string value of event
+                    "\n====== SUBMITTED FEEDBACK ======\n{}\n=\n",
                     json
             );
 

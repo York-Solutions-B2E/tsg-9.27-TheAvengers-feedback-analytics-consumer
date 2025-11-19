@@ -1,4 +1,3 @@
-#todo might be able to reconfigure with gitignore
 # ---------------------- BUILD STAGE ----------------------
 FROM eclipse-temurin:24-jdk AS build
 
@@ -9,10 +8,8 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# Copy pom.xml first for caching
 COPY pom.xml .
 
-# Pre-download dependencies (cache)
 RUN mvn -q dependency:go-offline
 
 COPY src ./src
