@@ -26,7 +26,8 @@ class FeedbackEventListenerTest {
                 "Dr. Strange",
                 5,
                 "Magical service!",
-                OffsetDateTime.now()
+                OffsetDateTime.now(),
+                "1.0.0"
         );
 
         // Act + Assert

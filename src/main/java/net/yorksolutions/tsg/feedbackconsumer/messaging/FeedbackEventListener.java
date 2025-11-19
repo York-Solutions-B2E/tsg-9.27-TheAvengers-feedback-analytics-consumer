@@ -40,7 +40,7 @@ public class FeedbackEventListener {
             String json = objectMapper.writeValueAsString(event);
 
             log.info(
-                    "\n====== RECEIVED FEEDBACK EVENT ======\n{}\n=====================================\n",
+                    "\n====== SUBMITTED FEEDBACK ======\n{}\n=====================================\n",
                     json
             );
 
