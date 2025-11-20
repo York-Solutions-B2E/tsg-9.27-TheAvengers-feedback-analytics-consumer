@@ -3,12 +3,12 @@ spring:
     name: tsg-9.27-TheAvengers-feedback-analytics-consumer
 
   kafka:
-    bootstrap-servers: localhost:9092
+    # Kafka inside Docker
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:kafka:29092}
 
     consumer:
       group-id: feedback-analytics-consumer
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      auto-offset-reset: latest
+      auto-offset-reset: earliest
 
     listener:
       missing-topics-fatal: false
@@ -21,6 +21,7 @@ logging:
     org:
       springframework:
         kafka: INFO
-    com:
-      tsg:
-        feedbackconsumer: DEBUG
+    net:
+      yorksolutions:
+        tsg:
+          feedbackconsumer: DEBUG
